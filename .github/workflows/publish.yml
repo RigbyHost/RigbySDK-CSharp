@@ -22,10 +22,10 @@ jobs:
           dotnet-version: 8.0.x
 
       - name: Restore
-        run: dotnet restore rigbysdk-csharp/RigbySDK.csproj
+        run: dotnet restore RigbySDK.csproj
 
       - name: Pack
-        run: dotnet pack rigbysdk-csharp/RigbySDK.csproj -c Release -o ./nupkg
+        run: dotnet pack RigbySDK.csproj -c Release -o ./nupkg
 
       - name: Publish to NuGet
         run: dotnet nuget push "./nupkg/*.nupkg" --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate

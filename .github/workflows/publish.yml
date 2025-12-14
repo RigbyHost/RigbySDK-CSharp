@@ -22,15 +22,12 @@ jobs:
           dotnet-version: 8.0.x
 
       - name: Restore
-        working-directory: rigbysdk-csharp
         run: dotnet restore
 
       - name: Pack
-        working-directory: rigbysdk-csharp
         run: dotnet pack -c Release -o ./nupkg
 
       - name: Publish to NuGet
-        working-directory: rigbysdk-csharp
         run: dotnet nuget push "./nupkg/*.nupkg" --api-key "$NUGET_API_KEY" --source https://api.nuget.org/v3/index.json
         env:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
